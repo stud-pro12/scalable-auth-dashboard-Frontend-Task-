@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
@@ -10,13 +11,11 @@ connectDB();
 
 // Middleware
 app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'https://your-app-name.vercel.app' // We'll update this after frontend deployment
-  ],
+  origin: ['http://localhost:3000', 'https://*.vercel.app'],
   credentials: true
 }));
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Routes
 const authRoutes = require('./routes/auth');
@@ -29,15 +28,29 @@ const taskRoutes = require('./routes/tasks');
 app.use('/api/tasks', taskRoutes);
 
 // Health check
-app.get('/health', (req, res) => {
-  res.json({ status: 'Server is running!', timestamp: new Date().toISOString() });
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    status: 'Server is running!', 
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development'
+  });
 });
 
-// Test routes
+// Test route
 app.get('/api/test', (req, res) => {
-  res.json({ message: 'Backend is working!' });
+  res.json({ message: 'Backend is working on Vercel!' });
 });
 
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on port ${PORT}`);
+// Catch all handler for API routes
+app.get('/api/*', (req, res) => {
+  res.status(404).json({ message: 'API route not found' });
 });
+
+// For Vercel serverless functions
+if (process.env.VERCEL) {
+  module.exports = app;
+} else {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
