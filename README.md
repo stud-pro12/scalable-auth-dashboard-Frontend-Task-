@@ -16,6 +16,49 @@ About Me Section
 Featured projects
 <img width="1463" height="851" alt="Screenshot 2025-09-24 at 5 58 58 PM" src="https://github.com/user-attachments/assets/24f58cec-be38-4314-9264-f80dc8acf8c6" />
 
+🌐 My Fullstack App
+
+A scalable fullstack web application built with React.js + Node.js/Express + MongoDB, featuring authentication (JWT), protected routes, responsive dashboard, and CRUD operations.
+
+This project is part of an assignment for Frontend Developer Intern and demonstrates UI/UX skills, secure backend integration, and production-ready project structure.
+
+🚀 Features
+🔹 Frontend
+
+i)Built with React.js
+
+ii)TailwindCSS for responsive design
+
+iii)Protected routes (dashboard requires login)
+
+iv)Forms with validation (client + server side)
+
+v)Search & filter for entities (e.g., tasks/notes/posts)
+
+🔹 Backend
+
+i)Node.js + Express lightweight API
+
+ii)JWT Authentication (login/signup/logout flow)
+
+iii)Password hashing with bcrypt
+
+iv)CRUD APIs for a sample entity (Tasks)
+
+v)MongoDB for persistence (via Mongoose)
+
+vi)Error handling & validation middleware
+
+🔹 Dashboard
+
+i)User profile management
+
+ii)CRUD operations on tasks
+
+iii)Search & filter UI
+
+iv)Secure logout flow
+
 
 
 
