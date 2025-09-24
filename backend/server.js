@@ -42,7 +42,7 @@ app.get('/api/test', (req, res) => {
 });
 
 // Catch all handler for API routes
-app.get('/api/*', (req, res) => {
+app.use('/api', (req, res, next) => {
   res.status(404).json({ message: 'API route not found' });
 });
 
