@@ -59,6 +59,20 @@ iii)Search & filter UI
 
 iv)Secure logout flow
 
+🔹Security & Scalability
+
+i)Password hashing (bcrypt or similar)
+
+ii)JWT authentication middleware
+
+iii)Error handling & validation
+
+iv)Code structured for easy scaling
+
+
+
+
+
 
 
 
