@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/server.js"
+    }
+  ],
+  "env": {
+    "MONGODB_URI": "mongodb+srv://tousifnawaz01_db_user:i8iEjltXxyb5tWQT@cluster0.qrzgs7x.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+    "JWT_SECRET": "8cwmCeXTZ8kzAUEJnTvhGnptFWoWKGJMlfXc1BaEgwc="
+  }
+}

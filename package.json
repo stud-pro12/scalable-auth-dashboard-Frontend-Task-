@@ -8,6 +8,6 @@
     "start": "cd backend && npm start"
   },
   "keywords": ["react", "nodejs", "mongodb", "fullstack"],
-  "author": "Your Name",
+  "author": "Tousif Nawaz",
   "license": "MIT"
 }

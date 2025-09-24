@@ -11,8 +11,10 @@ connectDB();
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://*.vercel.app'],
-  credentials: true
+  origin: ['http://localhost:3000'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
@@ -38,19 +40,14 @@ app.get('/api/health', (req, res) => {
 
 // Test route
 app.get('/api/test', (req, res) => {
-  res.json({ message: 'Backend is working on Vercel!' });
+  res.json({ message: 'Backend is working!' });
 });
 
 // Catch all handler for API routes
-app.use('/api', (req, res, next) => {
+app.use('/api', (req, res) => {
   res.status(404).json({ message: 'API route not found' });
 });
 
-// For Vercel serverless functions
-if (process.env.VERCEL) {
-  module.exports = app;
-} else {
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-}
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
